@@ -34,6 +34,7 @@ class GamesContainer extends Component {
         <div className="row">
           <div className="col-sm-4">
             <ul>
+              {this.props.games.map(function(game) { this.renderGame() ;})}
             </ul>
           </div>
         </div>
