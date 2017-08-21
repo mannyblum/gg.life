@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 
-const Game = props => {
-  console.log('props', props);
-  return (
-    <li>
-      <span>{props.id}</span>
-    </li>
-  );
-};
+class Game extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render () {
+    return (
+      <span>
+        {this.props.id}
+      </span>
+    );
+  }
+}
 
 Game.propTypes = {
   id: PropTypes.number.isRequired

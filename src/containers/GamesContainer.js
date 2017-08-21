@@ -16,13 +16,20 @@ class GamesContainer extends Component {
     this.props.fetchGames();
   }
 
+  getSingleGame(e) {
+    console.log('getting game', e);
+  }
+
   renderGame(game) {
     return (
-      <Game
-        key={game.id + Math.random() * 2}
-        id={game.id} />
+      <li key={game.id}>
+        <Game
+          onClick={(e) => this.getSingleGame(e)}
+          id={game.id} />
+      </li>
     );
   }
+
   render() {
     const { games } = this.props;
 
@@ -35,9 +42,9 @@ class GamesContainer extends Component {
           <div className="col-sm-4">
             <ul>
               {
-                (!games)
+                (!this.props.games)
                   ? <li>Loading</li>
-                  : games.map(this.renderGame)
+                  : this.props.games.map(this.renderGame)
               }
             </ul>
           </div>
