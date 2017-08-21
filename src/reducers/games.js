@@ -2,21 +2,7 @@ import {
   FETCH_GAMES
 } from '../actions/types';
 
-const initialState = {
-  games: [{
-    id: 1
-  },{
-    id: 1
-  },{
-    id: 1
-  },{
-    id: 1
-  },{
-    id: 1
-  }]
-};
-
-export default function(state=initialState, action) {
+export default function(state={}, action) {
   switch(action.type) {
   case FETCH_GAMES: {
 

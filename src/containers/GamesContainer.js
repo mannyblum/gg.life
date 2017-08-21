@@ -9,11 +9,10 @@ import * as actions from '../actions';
 class GamesContainer extends Component {
 
   static propTypes = {
-    games: PropTypes.array.isRequired,
     fetchGames: PropTypes.func.isRequired
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchGames();
   }
 
@@ -35,7 +34,11 @@ class GamesContainer extends Component {
         <div className="row">
           <div className="col-sm-4">
             <ul>
-              {this.props.games.map(this.renderGame)}
+              {
+                (!games)
+                  ? <li>Loading</li>
+                  : games.map(this.renderGame)
+              }
             </ul>
           </div>
         </div>
