@@ -9,7 +9,8 @@ import * as actions from '../actions';
 class GamesContainer extends Component {
 
   static propTypes = {
-    games: PropTypes.array.isRequired
+    games: PropTypes.array.isRequired,
+    fetchGames: PropTypes.func.isRequired
   }
 
   componentWillMount() {
@@ -34,7 +35,7 @@ class GamesContainer extends Component {
         <div className="row">
           <div className="col-sm-4">
             <ul>
-              {this.props.games.map(function(game) { this.renderGame() ;})}
+              {this.props.games.map(this.renderGame)}
             </ul>
           </div>
         </div>
@@ -44,7 +45,9 @@ class GamesContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  return { games: state.games.games };
+  const result = state.games;
+
+  return result;
 }
 
 export default connect(mapStateToProps, actions)(GamesContainer);

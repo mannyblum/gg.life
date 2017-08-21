@@ -17,14 +17,14 @@ const initialState = {
 };
 
 export default function(state=initialState, action) {
-  console.log('action.type', action.type);
   switch(action.type) {
   case FETCH_GAMES: {
-    console.log('action.payload.data', action.payload.data);
-    return {
-      ...state,
-      ...action.payload.data
-    };
+
+    const result = Object.assign({}, state, {
+      games: action.payload.data
+    });
+
+    return result;
   }
   default:
     return state;
