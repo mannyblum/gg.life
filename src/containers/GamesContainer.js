@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Game from '../components/Game';
+import GameDetail from '../components/GameDetail';
 
 import * as actions from '../actions';
 
@@ -19,11 +20,7 @@ class GamesContainer extends Component {
   renderGame(game) {
     let singleGame = game.data[0];
     return (
-      <div key={singleGame.id}
-        className="list-group-item"
-        id={singleGame.id}>
-        <Game game={singleGame} />
-      </div>
+      <Game key={singleGame.id} game={singleGame} />
     );
   }
 
@@ -45,6 +42,9 @@ class GamesContainer extends Component {
               }
             </div>
           </div>
+          <div className="col-sm-6">
+            <GameDetail />
+          </div>
         </div>
       </div>
     );
@@ -53,8 +53,6 @@ class GamesContainer extends Component {
 
 function mapStateToProps(state) {
   const result = state.games;
-
-  console.log('result', result);
 
   return result;
 }

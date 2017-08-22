@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {
   FETCH_GAMES,
-  FETCH_SINGLE_GAME
+  FETCH_SINGLE_GAME,
+  SELECT_GAME
 } from './types';
 
 const CONFIG = {
@@ -48,5 +49,13 @@ export const fetchSingleGame = (id) => {
   return {
     type: FETCH_SINGLE_GAME,
     payload: request
+  };
+};
+
+export const selectGame = (game) => {
+  console.log('selectGame');
+  return {
+    type: SELECT_GAME,
+    game
   };
 };
