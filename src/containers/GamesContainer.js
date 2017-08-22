@@ -16,17 +16,14 @@ class GamesContainer extends Component {
     this.props.fetchGames();
   }
 
-  getSingleGame(e) {
-    console.log('getting game', e);
-  }
-
   renderGame(game) {
+    let singleGame = game.data[0];
     return (
-      <li key={game.id}>
-        <Game
-          onClick={(e) => this.getSingleGame(e)}
-          id={game.id} />
-      </li>
+      <div key={singleGame.id}
+        className="list-group-item"
+        id={singleGame.id}>
+        <Game game={singleGame} />
+      </div>
     );
   }
 
@@ -40,13 +37,13 @@ class GamesContainer extends Component {
         </div>
         <div className="row">
           <div className="col-sm-4">
-            <ul>
+            <div className="list-group">
               {
                 (!this.props.games)
-                  ? <li>Loading</li>
-                  : this.props.games.map(this.renderGame)
+                  ? <div className="list-group-item">Loading</div>
+                  : this.props.games.map(this.renderGame, this)
               }
-            </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -56,6 +53,8 @@ class GamesContainer extends Component {
 
 function mapStateToProps(state) {
   const result = state.games;
+
+  console.log('result', result);
 
   return result;
 }

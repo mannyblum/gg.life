@@ -7,16 +7,21 @@ class Game extends Component {
   }
 
   render () {
+    const { game } = this.props;
     return (
-      <span>
-        {this.props.id}
-      </span>
+      <div>
+        <h4 className="list-group-item-heading">
+          {game.name}
+        </h4>
+        <div className="list-group-item-text">
+          {game.summary}
+        </div>
+      </div>
     );
   }
 }
 
 Game.propTypes = {
-  id: PropTypes.number.isRequired
 };
 
 export default Game;
